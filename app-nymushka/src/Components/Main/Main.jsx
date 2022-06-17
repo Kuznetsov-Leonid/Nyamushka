@@ -2,73 +2,53 @@
  * create by Kuznetsov Leonid
  */
 
-import React from "react";
-import { CardItem } from "../Card/CardItem";
-import { Row, Col } from 'react-bootstrap';
+import React, { Component } from "react";
+import { Item } from "../Card/CardItem";
 import { DATA } from '../../data/data';
 
-
-
-const Main = () => {
-
-    /**
-     * 
-     * @param {*} props 
-     * @returns 
-     */
-    const Item = (props) => {
-        const nameTitle    = props.nameTitle
-        const portions     = props.portions
-        const mous         = props.mous
-        const present      = props.present
-        const message      = props.message
-        const weight       = props.weight
-        const availability = props.availability
-        return(
-            <>
-                <Col>
-                    <CardItem
-                        FIRST_TITLE  = 'Сказочное заморское яство'
-                        NAME_TITLE   = {nameTitle.nameTitle}
-                        PORTIONS     = {portions.portions}
-                        MOUSE        = {mous.mous}
-                        PRESENT      = {present.present}
-                        MESSAGE      = {message.message}
-                        WEIGHT       = {weight.weight}
-                        AVAILABILITY = {availability.availability}
-                    />
-                </Col>
-            </>
-        );
+class Main extends Component {
+    constructor(props) {
+        super(props);
+        this.state = DATA;
+        this.toggleStatus = this.toggleStatus.bind(this);
+        this.getItemIndexById = this.getItemIndexById.bind(this);
     }
 
-    const ListItem = (props) => {
-        const data  = props.data
-        const items = data.map((item) =>{
-            return <Item 
-                        key          = {item.id}
-                        nameTitle    = {item}
-                        portions     = {item}
-                        mous         = {item}
-                        present      = {item}
-                        message      = {item}
-                        weight       = {item}
-                        availability = {item}
-                    />
-        })
-        return(
-            <>
-                <Row>
-                    {items}  
-                </Row>
-            </>
-        );
+    toggleStatus(id) {
+        let index = this.getItemIndexById(id);
+        let newItems = this.state.items;
+        if (newItems[index].status !== "disabled"){
+            newItems[index].status = (newItems[index].status === "notSelected") ? "selected" : "notSelected";
+            this.setState({ items: newItems });
+        }
+
     }
 
-    return(
-        <>
-            <ListItem data = {DATA}/>
-        </>
-    );
+    getItemIndexById(id) {
+        let res = -1;
+        this.state.items.forEach((item, index) => {
+            if (item.id === id) res = index;
+        });
+        return res;
+    }
+
+    render() {
+        return (
+            <div class="container px-2 px-xl-0">
+                <div class="row mx-0">
+                    <div class="col-xl-4 d-flex justify-content-center mb-4 mb-xl-0">
+                        <Item item={this.state.items[0]} toggleStatus={this.toggleStatus} />
+                    </div>
+                    <div class="col-xl-4 col-12 col-md-6 d-flex justify-content-center mb-4 mb-md-0">
+                        <Item item={this.state.items[1]} toggleStatus={this.toggleStatus} />
+                    </div>
+                    <div class="col-xl-4 col-12 col-md-6 d-flex justify-content-center mb-4 mb-md-0">
+                        <Item item={this.state.items[2]} toggleStatus={this.toggleStatus} />
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }
-export default Main
+
+export default Main;
