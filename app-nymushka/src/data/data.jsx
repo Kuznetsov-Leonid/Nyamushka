@@ -3,10 +3,45 @@
  * 
  * DATA Base with store
  */
-const DATA = [
-    {id:1, nameTitle: "с фуа-гра", portions: 10, mous: "", present: "мышь в падарок", message: "", weight: 0.5, availability: 'inStock'},
-    {id:2, nameTitle: "с рыбой", portions: 40, mous: 2, present: "мыши в падарок", message: "", weight: 2, availability: 'inStock'},
-    {id:3, nameTitle: "с курой", portions: 100, mous: 5, present: "мышей в падарок", message: "заказчик доволен", weight: 5, availability: 'outOfStock'},
-];
+const DATA = {
+        items: [
+            {
+                id: 0,
+                title: "Сказочное заморское яство",
+                titleSelectedHover: "Котэ не одобряет?",
+                name: "Нямушка",
+                stuffing: "с фуа-гра",
+                portionCount: 10,
+                gift: ["мышь в подарок"],
+                weight: "0,5",
+                status: "notSelected",
+                selectedText: "Печень утки разварная с артишоками."
+            },
+            {
+                id: 1,
+                title: "Сказочное заморское яство",
+                titleSelectedHover: "Котэ не одобряет?",
+                name: "Нямушка",
+                stuffing: "с рыбой",
+                portionCount: 40,
+                gift: ["2 мыши в подарок"],
+                weight: "2",
+                status: "selected",
+                selectedText: "Головы щучьи с чесноком да свежайшая сёмгушка."
+            },
+            {
+                id: 2,
+                title: "Сказочное заморское яство",
+                titleSelectedHover: "Котэ не одобряет?",
+                name: "Нямушка",
+                stuffing: "с курой",
+                portionCount: 100,
+                gift: ["5 мышей в подарок", "заказчик доволен"],
+                weight: "5",
+                status: "disabled",
+                selectedText: "Филе из цыплят с трюфелями в бульоне."
+            }
+        ]
+};
 
 export { DATA } 

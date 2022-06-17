@@ -5,63 +5,58 @@
 import React from "react";
 import './style.css';
 
-/**
- * Customizable component with a constructor of displayed data
- * 
- * @param {FIRST_TITLE, NAME_TITLE, PORTIONS, MOUSE, MESSAGE, WEIGHT, PRESENT, AVAILABILITY} props 
- * @returns 
-    <CardItem
-        FIRST_TITLE  = param(txt)
-        NAME_TITLE   = param(txt)
-        PORTIONS     = param(num)
-        MOUSE        = param(num)
-        PRESENT      = param(txt)
-        MESSAGE      = param(txt)
-        WEIGHT       = param(num)
-        AVAILABILITY = class
-    />
- */
-const CardItem = (props) => {
-    const FIRST_TITLE  = props.FIRST_TITLE
-    const NAME_TITLE   = props.NAME_TITLE
-    const PORTIONS     = props.PORTIONS
-    const MOUSE        = props.MOUSE
-    const PRESENT      = props.PRESENT
-    const MESSAGE      = props.MESSAGE
-    const WEIGHT       = props.WEIGHT
-    const AVAILABILITY = props.AVAILABILITY
-    return(
-        <>
-        <div className = {AVAILABILITY}>
-            <div class="card-border blu">
-                <div class="card">
-                    <div className = "card-container">
-                        <h6>{FIRST_TITLE}</h6>
-                        <h1>Нямушка</h1>
-                        <h3>{NAME_TITLE}</h3>
+export class Item extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    showSelectedHoverTitle(mode, text) {
+        if (this.refs.mainWrapper.classList.contains("selected") && mode === "MouseEnter"){
+            this.refs.title.innerHTML = text;
+            this.refs.title.style.color = "#e62e7a";
+        }
+
+        if (mode === "MouseLeave")
+        {
+            this.refs.title.innerHTML = this.props.item.title;
+            this.refs.title.style.color = "#666";
+        }
+    }
+
+    render() {
+        return (
+            <div className={"Item-wrapper " + this.props.item.status} ref="mainWrapper">
+                <div
+                    className="Item"
+                    onClick={() => this.props.toggleStatus(this.props.item.id) }
+                    onMouseEnter={() => this.showSelectedHoverTitle("MouseEnter", this.props.item.titleSelectedHover)}
+                    onMouseLeave={() => this.showSelectedHoverTitle("MouseLeave", this.props.item.title)}
+                >
+                    <div class="Item__inner-wrapper" />
+                    <div className="Item__title" ref="title">
+                        {this.props.item.title}
                     </div>
-                    <div className = "card-sub-container">
-                        <h6>
-                            <span>{PORTIONS}</span>&nbsp;порций <br /> 
-                            <span>{MOUSE}</span>&nbsp;{PRESENT} {MESSAGE}
-                        </h6>
+                    <h3 className="Item__name">{this.props.item.name}</h3>
+                    <div className="Item__stuffing">{this.props.item.stuffing}</div>
+                    <div className="Item__portionCount">
+                        <b>{this.props.item.portionCount}</b> порций
                     </div>
-                    <div className = "card-img"></div>
-                    <div className = "Oval blu">
-                        <div className = "weight">
-                            <h1>{WEIGHT}</h1>
-                            <h6>кг</h6>
-                        </div>
+                    {this.props.item.gift.map(item => <div className="Item__gift">{item}</div>)}
+                    <div className="Item__nyamushka" />
+                    <div className="Item__weight">
+                        <div className="Item__weight-value">{this.props.item.weight}</div>
+                        <div className="Item__weight-kg">кг</div>
                     </div>
                 </div>
+                <div className="Item__label Item__label_buy">
+                    Чего сидишь? Порадуй котэ,
+                    <a className="Item__label-link" href="#" onClick={() => this.props.toggleStatus(this.props.item.id)}>
+                        купи
+                    </a>
+                </div>
+                <div className="Item__label Item__label_sadness">{"Печалька, " + this.props.item.stuffing + " закончился."}</div>
+                <div className="Item__label Item__label_selected">{this.props.item.selectedText}</div>
             </div>
-        </div>
-            
-        </>
-    );
+        );
+    }
 }
-
-export {
-    CardItem
-} 
-
