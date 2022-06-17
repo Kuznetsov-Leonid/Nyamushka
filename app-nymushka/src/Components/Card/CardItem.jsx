@@ -8,28 +8,31 @@ import './style.css';
 /**
  * Customizable component with a constructor of displayed data
  * 
- * @param {FIRST_TITLE, NAME_TITLE, PORTIONS, MOUSE, MESSAGE, WEIGHT, PRESENT} props 
+ * @param {FIRST_TITLE, NAME_TITLE, PORTIONS, MOUSE, MESSAGE, WEIGHT, PRESENT, AVAILABILITY} props 
  * @returns 
- * <CardItem
- * FIRST_TITLE = param(txt)
- * NAME_TITLE  = param(txt)
- * PORTIONS    = param(num)
- * MOUSE       = param(num)
- * PRESENT     = param(txt)
- * MESSAGE     = param(txt)
- * WEIGHT      = param(num)
- * />
+    <CardItem
+        FIRST_TITLE  = param(txt)
+        NAME_TITLE   = param(txt)
+        PORTIONS     = param(num)
+        MOUSE        = param(num)
+        PRESENT      = param(txt)
+        MESSAGE      = param(txt)
+        WEIGHT       = param(num)
+        AVAILABILITY = class
+    />
  */
 const CardItem = (props) => {
-    const FIRST_TITLE = props.FIRST_TITLE
-    const NAME_TITLE  = props.NAME_TITLE
-    const PORTIONS    = props.PORTIONS
-    const MOUSE       = props.MOUSE
-    const PRESENT     = props.PRESENT
-    const MESSAGE     = props.MESSAGE
-    const WEIGHT      = props.WEIGHT
+    const FIRST_TITLE  = props.FIRST_TITLE
+    const NAME_TITLE   = props.NAME_TITLE
+    const PORTIONS     = props.PORTIONS
+    const MOUSE        = props.MOUSE
+    const PRESENT      = props.PRESENT
+    const MESSAGE      = props.MESSAGE
+    const WEIGHT       = props.WEIGHT
+    const AVAILABILITY = props.AVAILABILITY
     return(
         <>
+        <div className = {AVAILABILITY}>
             <div class="card-border blu">
                 <div class="card">
                     <div className = "card-container">
@@ -52,6 +55,8 @@ const CardItem = (props) => {
                     </div>
                 </div>
             </div>
+        </div>
+            
         </>
     );
 }

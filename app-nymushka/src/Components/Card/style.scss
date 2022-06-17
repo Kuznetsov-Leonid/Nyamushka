@@ -34,10 +34,13 @@
 .purple{
     background-color: #D91667;
 }
+.disable{
+    background-color: #B3B3B3;
+}
 /*---------------------*/
 
 .card-border{
-    margin: auto;
+    margin: 12px auto 12px auto;
     position: relative;
     width: 328px;
     height: 488px;
@@ -145,10 +148,10 @@
 /*----------Mobyle less 380px------------*/
 @media (max-width: 380px) {
     .card-border{
-        width: auto;
+        width: 230px;
     }
     .card{
-        width: 97%; 
+        width: 96%; 
         .card-container{
             margin: 21px auto 15px 12vw;
             width: auto;
