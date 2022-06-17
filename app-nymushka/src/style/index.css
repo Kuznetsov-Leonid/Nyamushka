@@ -13,4 +13,23 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+.App {
+  max-width: 1170px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+@media (max-width: 1200px), (max-device-width: 1200px) {
+  .App {
+    position: static;
+    -webkit-transform: none;
+            transform: none;
+    margin-bottom: 50px;
+  }
+}
 /*# sourceMappingURL=index.css.map */
