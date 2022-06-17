@@ -1,0 +1,23 @@
+
+/*------------------CONTAINER---------------------*/
+
+.Container{
+    max-width: 1168px;
+    margin: 0px auto;
+    padding: 0px 15px;
+}
+@media (max-width: 1140px) {
+    .Container{
+        max-width: 1168px;
+    }
+}
+@media (max-width: 992px) {
+    .Container{
+        max-width: none;
+    }
+}
+@media (max-width: 767px) {
+    .Container{
+        max-width: none;
+    }
+}
