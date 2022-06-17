@@ -22,4 +22,10 @@
     max-width: none;
   }
 }
+
+@media (max-width: 380px) {
+  .Container {
+    max-width: none;
+  }
+}
 /*# sourceMappingURL=container.css.map */

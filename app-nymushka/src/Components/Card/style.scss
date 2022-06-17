@@ -1,0 +1,177 @@
+/*----Fonts----*/
+@font-face {
+    font-family: "Trebuchet MS";
+    font-style: normal;
+    src: local("Trebuchet MS"),
+            url('../../Fonts/TrebuchetMS/trebuchetms.ttf');
+}
+/*-------------*/
+
+/*----Mixins----*/
+@mixin poligon-card {
+    clip-path: polygon(14.7% 0, 100% 0, 100% 100%, 0 100%, 0 9.7%);
+    border-radius: 11px;
+}
+@mixin block-center {
+    display: flex;
+    align-items: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    box-sizing: border-box;
+}
+
+@mixin poligon-border {
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%, 0 10%);
+    border-radius: 14px;
+}
+/*---------------*/
+
+
+/*----Wisual state----*/
+.blu{
+    background-color: #2ea8e6;
+}
+.purple{
+    background-color: #D91667;
+}
+/*---------------------*/
+
+.card-border{
+    margin: auto;
+    position: relative;
+    width: 328px;
+    height: 488px;
+    @include poligon-border();
+    cursor: pointer;
+}
+
+.card{
+    position: absolute;
+    top: 4px; 
+    left: 4px; 
+    width: 320px; 
+    height: 480px; 
+    background-color: #f2f2f2;
+    @include poligon-card();
+    .card-container{
+        margin: 21px 61px 15px 48px;
+        h6{
+            font-family: 'Trebuchet MS';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 19px;
+            color: #666666;
+        }
+        h1{
+            font-family: 'Trebuchet MS';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 56px;
+            color: #000000;
+        }
+        h3{
+            font-family: 'Trebuchet MS';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 28px;
+            color: #000000;
+        }
+    }
+    .card-sub-container{
+        margin: 0px 142px 0px 48px;
+        
+        h6{
+            font-family: 'Trebuchet MS';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 16px;
+            color: #666666;
+        }
+        span{
+            font-family: 'Trebuchet MS';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 15px;
+            line-height: 16px;
+            color: #666666;
+        }
+    }
+    .card-img{
+        position: absolute;
+        top: 210px;
+        left: -5px;
+        background: no-repeat url('../../img/Cat.png');
+        width: 320px;
+        height: 270px;
+        @include poligon-border();
+    }
+    .Oval{
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        left: 69%;
+        right: 5%;
+        top: 81%;
+        border-radius: 50%;
+        @include block-center();
+        .weight{
+            width: 100%;
+            text-align: center;
+            color: #FFFFFF;
+            margin-top: 1.8rem;
+            margin-bottom: 0.5rem;
+            h1{
+                font-family: 'Trebuchet MS';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 42px;
+                line-height: 22px;
+            }
+            h6{
+                font-family: 'Trebuchet MS';
+                font-style: normal;
+                font-weight: 100;
+                font-size: 22px;
+                line-height: 22px;
+            }
+        }
+    }
+}
+
+/*----------Mobyle less 380px------------*/
+@media (max-width: 380px) {
+    .card-border{
+        width: auto;
+    }
+    .card{
+        width: 97%; 
+        .card-container{
+            margin: 21px auto 15px 12vw;
+            width: auto;
+            h6{
+                font-size: 13px;
+                margin: 0;
+            }
+            h1{
+                font-size: 40px;
+                margin: 0;
+            }
+            h3{
+                margin: 0;
+            }
+        }
+        .card-sub-container{
+            margin: 0px auto 0px 12vw;
+        }
+        .card-img{
+            max-width: 103%;
+        }
+        .Oval{
+            margin: 0px 0px 0px auto;
+        }
+    }
+}
