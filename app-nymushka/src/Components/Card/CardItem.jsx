@@ -5,11 +5,15 @@
 import React from "react";
 import './style.css';
 
-export class Item extends React.Component {
+/**
+ * Item cards component
+ */
+class Item extends React.Component {
     constructor(props) {
         super(props);
     }
 
+    //Mous mode in nav
     showSelectedHoverTitle(mode, text) {
         if (this.refs.mainWrapper.classList.contains("selected") && mode === "MouseEnter"){
             this.refs.title.innerHTML = text;
@@ -44,15 +48,16 @@ export class Item extends React.Component {
                     {this.props.item.gift.map(item => <div className="Item__gift">{item}</div>)}
                     <div className="Item__nyamushka" />
                     <div className="Item__weight">
-                        <div className="Item__weight-value">{this.props.item.weight}</div>
-                        <div className="Item__weight-kg">кг</div>
+                        <div className="Item__weight_value">{this.props.item.weight}</div>
+                        <div className="Item__weight_kg">кг</div>
                     </div>
                 </div>
                 <div className="Item__label Item__label_buy">
-                    Чего сидишь? Порадуй котэ,
-                    <a className="Item__label-link" href="#" onClick={() => this.props.toggleStatus(this.props.item.id)}>
+                    Чего сидишь? Порадуй котэ,&nbsp; 
+                    <a className="Item__label_link" href="#" onClick={() => this.props.toggleStatus(this.props.item.id)}>
                         купи
                     </a>
+                    <pointBlu>.</pointBlu>
                 </div>
                 <div className="Item__label Item__label_sadness">{"Печалька, " + this.props.item.stuffing + " закончился."}</div>
                 <div className="Item__label Item__label_selected">{this.props.item.selectedText}</div>
@@ -60,3 +65,4 @@ export class Item extends React.Component {
         );
     }
 }
+export {Item}
