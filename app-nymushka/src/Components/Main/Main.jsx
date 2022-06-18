@@ -21,12 +21,11 @@ class Main extends Component {
             newItems[index].status = (newItems[index].status === "notSelected") ? "selected" : "notSelected";
             this.setState({ items: newItems });
         }
-
     }
 
     getItemIndexById(id) {
         let res = -1;
-        this.state.items.forEach((item, index) => {
+        this.state.items.map((item, index) => {
             if (item.id === id) res = index;
         });
         return res;
